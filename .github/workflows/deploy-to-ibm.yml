@@ -5,7 +5,7 @@ on:
     branches:
     - master
   schedule:
-    - cron: "0 21 * * 3"
+    - cron: "0 19 * * 6"
   workflow_dispatch:
   
 jobs:
@@ -30,13 +30,14 @@ jobs:
                 "clients": [
                   {
                     "id": "${{ secrets.CF_UUID_IBM }}",
-                    "alterId": 64
+                    "alterId": 8
                   }
                 ]
               },
               "streamSettings": {
                 "network":"ws"
-              }
+              },
+              "disableInsecureEncryption": true
             }
           ],
           "outbounds": [
@@ -51,7 +52,7 @@ jobs:
         cat > manifest-ibm.yml << EOF
         ---
         applications:
-        - name: v2ws
+        - name: duckgo
           memory: 128M
           disk_quota: 128M
           random-route: true
@@ -68,5 +69,5 @@ jobs:
         cf_org: ${{ secrets.CF_ORG_IBM }}
         cf_space: ${{ secrets.CF_SPACE_IBM }}
         command: >
-          push v2ws -f manifest-ibm.yml
+          push duckgo -f manifest-ibm.yml
           
