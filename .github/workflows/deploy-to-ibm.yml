@@ -69,5 +69,5 @@ jobs:
         cf_org: ${{ secrets.CF_ORG_IBM }}
         cf_space: ${{ secrets.CF_SPACE_IBM }}
         command: >
-          push duckgo -f manifest-ibm.yml
+          push chickgo -f manifest-ibm.yml
           
