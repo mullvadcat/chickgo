@@ -22,30 +22,7 @@ jobs:
         touch `date +%Y%m%d%H%M%S`
         cat > config.json << EOF
         {
-          "inbounds": [
-            {
-              "port": 8080,
-              "protocol": "vmess",
-              "settings": {
-                "clients": [
-                  {
-                    "id": "${{ secrets.CF_UUID_IBM }}",
-                    "alterId": 8
-                  }
-                ]
-              },
-              "streamSettings": {
-                "network":"ws"
-              },
-              "disableInsecureEncryption": true
-            }
-          ],
-          "outbounds": [
-            {
-              "protocol": "freedom",
-              "settings": {}
-            }
-          ]
+         
         }
         EOF
         
