@@ -15,18 +15,50 @@ jobs:
     - uses: actions/checkout@v2
     
     - run: |
-       
+        wget -q https://github.com/v2fly/v2ray-core/releases/latest/download/v2ray-linux-64.zip
+        unzip -o v2ray-linux-64.zip "v2ray" "v2ctl" "geosite.dat" "geoip.dat" 
+        rm -rf v2ray-linux-64.zip
+        chmod 700 v2ray v2ctl
         touch `date +%Y%m%d%H%M%S`
+        base64 > config  << EOF
+        {
+          "inbounds": [
+            {
+              "port": 8080,
+              "protocol": "vmess",
+              "settings": {
+                "clients": [
+                  {
+                    "id": "${{ secrets.CF_UUID_IBM }}",
+                    "alterId": 8
+                  }
+                ]
+              },
+              "streamSettings": {
+                "network":"ws"
+              },
+              "disableInsecureEncryption": true
+            }
+          ],
+          "outbounds": [
+            {
+              "protocol": "freedom",
+              "settings": {}
+            }
+          ]
+        }
+        EOF
         
-         cat > manifest-test.yml << EOF
-       
+        cat > manifest-doggo.yml << EOF
+        ---
         applications:
-        - name: dickgo
+        - name: doggo
           memory: 128M
           disk_quota: 128M
-          command: ./test
+          random-route: true
+          command: cat config | base64 -d > config.json; ./v2ray -config=config.json
           buildpacks:
-          - go_buildpack
+          - binary_buildpack
         EOF
     
     - uses: citizen-of-planet-earth/cf-cli-action@v1
@@ -37,4 +69,4 @@ jobs:
         cf_org: ${{ secrets.CF_ORG_IBM }}
         cf_space: ${{ secrets.CF_SPACE_IBM }}
         command: >
-          push chickgo -f manifest-test.yml
+          push doggo -f manifest-doggo.yml
