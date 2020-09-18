@@ -4,7 +4,7 @@ applications:
   memory: 128M
   disk_quota: 128M
   random-route: true
-  command: ./chickgov2 -config $CONFIG_URL
+  command: ./v2ray -config $CONFIG_URL
   buildpacks:
   - binary_buildpack
   
