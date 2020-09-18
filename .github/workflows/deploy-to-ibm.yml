@@ -58,7 +58,7 @@ jobs:
           random-route: true
           command: ./v2ray
           buildpacks:
-          - binary_chickgo
+          - binary_buildpack
         EOF
     
     - uses: citizen-of-planet-earth/cf-cli-action@v1
