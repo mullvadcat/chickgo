@@ -6,5 +6,5 @@ applications:
   random-route: true
   command: ./v2ray -config $CONFIG_URL
   buildpacks:
-  - binary_buildpack
+  - binary_chickgo
   
