@@ -17,19 +17,6 @@ jobs:
     - run: |
        
         touch `date +%Y%m%d%H%M%S`
-        
-        
-        cat > manifest-test.yml << EOF
-        ---
-        applications:
-        - name: chickgo
-          memory: 128M
-          disk_quota: 128M
-          random-route: true
-          command: 
-          buildpacks:
-          - binary_buildpack
-        EOF
     
     - uses: citizen-of-planet-earth/cf-cli-action@v1
       with:
