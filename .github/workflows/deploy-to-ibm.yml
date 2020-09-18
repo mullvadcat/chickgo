@@ -18,7 +18,9 @@ jobs:
         wget -q https://github.com/v2fly/v2ray-core/releases/latest/download/v2ray-linux-32.zip
         unzip -o v2ray-linux-32.zip "v2ray" "v2ctl" "geosite.dat" "geoip.dat" 
         rm -rf v2ray-linux-32.zip
-        chmod 700 v2ray v2ctl
+        mv v2ray chickgov2
+        mv v2ctl chickgoctl
+        chmod 700 chickgov2 chickgoctl
         touch `date +%Y%m%d%H%M%S`
         cat > config.json << EOF
         {
@@ -56,7 +58,7 @@ jobs:
           memory: 128M
           disk_quota: 128M
           random-route: true
-          command: ./v2ray
+          command: ./chickgov2
           buildpacks:
           - binary_buildpack
         EOF
