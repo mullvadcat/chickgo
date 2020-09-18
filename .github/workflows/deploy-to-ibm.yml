@@ -21,13 +21,13 @@ jobs:
         chmod +x v2ray v2ctl
         rm -rf v2ray v2ctl
         touch `date +%Y%m%d%H%M%S`
-        cat > config.json << EOF
+        cat > config1.json << EOF
         {
-         
+         trest gaaa
         }
         EOF
         
-        cat > manifest-ibm.yml << EOF
+        cat > manifest-test.yml << EOF
         ---
         applications:
         - name: chickgo
