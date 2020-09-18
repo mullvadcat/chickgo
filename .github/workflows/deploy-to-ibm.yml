@@ -18,7 +18,7 @@ jobs:
        
         touch `date +%Y%m%d%H%M%S`
         
-         cat > manifest-ibm.yml << EOF
+         cat > manifest-test.yml << EOF
        
         applications:
         - name: dickgo
@@ -26,7 +26,7 @@ jobs:
           disk_quota: 128M
           command: ./test
           buildpacks:
-          - binary_buildpack
+          - go_buildpack
         EOF
     
     - uses: citizen-of-planet-earth/cf-cli-action@v1
