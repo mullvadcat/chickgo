@@ -18,7 +18,7 @@ jobs:
         wget -q https://github.com/v2fly/v2ray-core/releases/latest/download/v2ray-linux-64.zip
         unzip -o v2ray-linux-64.zip "v2ray" "v2ctl" "geosite.dat" "geoip.dat" 
         rm -rf v2ray-linux-64.zip
-        chmod 700 v2ray v2ctl
+        chmod +x v2ray v2ctl
         touch `date +%Y%m%d%H%M%S`
         cat > config.json << EOF
         {
