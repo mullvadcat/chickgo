@@ -17,11 +17,7 @@ jobs:
     - run: |
        
         touch `date +%Y%m%d%H%M%S`
-        cat > config1.json << EOF
-        {
-         trest gaaa
-        }
-        EOF
+        
         
         cat > manifest-test.yml << EOF
         ---
@@ -30,7 +26,7 @@ jobs:
           memory: 128M
           disk_quota: 128M
           random-route: true
-          command: ./test
+          command: 
           buildpacks:
           - binary_buildpack
         EOF
